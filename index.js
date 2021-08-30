@@ -12,8 +12,10 @@ document.getElementById("searchButton").addEventListener("click", function(){
 })
 
 const allData = (data)=>{
+    console.log(data)
     document.getElementById("cityName").innerText = data.name || "Unknown name" ;
     document.getElementById("temperature").innerText = data.main.temp;
+    document.getElementById("feel").innerText = data.main.feels_like;
     document.getElementById("status").innerText = data.weather[0].main;
     document.getElementById("icon").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
     document.getElementById("inputValue").value=""
