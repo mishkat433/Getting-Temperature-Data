@@ -6,19 +6,27 @@ function getWeatherData(city) {
         .then(data => allData(data))
 }
 
-document.getElementById("searchButton").addEventListener("click", function(){
+document.getElementById("searchButton").addEventListener("click", function () {
     const inputValue = document.getElementById("inputValue").value;
-    getWeatherData(inputValue)
+    getWeatherData(inputValue);
 })
 
-const allData = (data)=>{
-    console.log(data)
-    document.getElementById("cityName").innerText = data.name || "Unknown name" ;
-    document.getElementById("temperature").innerText = data.main.temp;
-    document.getElementById("feel").innerText = data.main.feels_like;
-    document.getElementById("status").innerText = data.weather[0].main;
-    document.getElementById("icon").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
-    document.getElementById("inputValue").value=""
+const allData = (data) => {
+    findElement("cityName", data.name || "Unknown Name");
+    findElement("temperature", data.main.temp);
+    findElement("feel", data.main.feels_like);
+    findElement("status", data.weather[0].main);
+    findElement("icon", data.main.temp);
+
+    document.getElementById("").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+
+    document.getElementById("inputValue").value = ""
 }
 
 getWeatherData("cox's bazar")
+
+
+const findElement = (id, value) => {
+    const element = document.getElementById(id);
+    element.innerText = value;
+}
